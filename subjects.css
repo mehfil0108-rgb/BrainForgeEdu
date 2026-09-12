@@ -1,0 +1,23 @@
+/* Subjects Page Dedicated Styling */
+.subjects-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.subject-card:hover {
+    border-color: #5b4bdb !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(91, 75, 219, 0.08) !important;
+}
+
+.module-row-item:hover {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+@media (max-width: 900px) {
+    .subjects-grid-container {
+        grid-template-columns: 1fr;
+    }
+}

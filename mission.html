@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainForge | Adaptive Practice Mission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { margin: 0; background-color: #f4f6fb; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
+        .sidebar { 
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            width: 260px; 
+            height: 100vh; 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border-right: 1px solid rgba(229, 231, 239, 0.6); 
+            display: flex; 
+            flex-direction: column; 
+            z-index: 100; 
+            box-sizing: border-box; 
+            transition: transform 0.3s ease; 
+        }
+        .main { margin-left: 260px; width: calc(100% - 260px); padding: 25px 40px; box-sizing: border-box; min-height: 100vh; }
+        @media (max-width: 900px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main { margin-left: 0 !important; width: 100% !important; padding: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        if (!localStorage.getItem("brainforgeUser") && !localStorage.getItem("studentName")) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+     <!-- MAIN SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+        <div class="sidebar-topbar" style="padding: 24px 20px;">
+            <div class="brand" style="display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 18px; color: #172033;">
+                <div class="brand-icon" style="width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0b0f19; border: 1px solid #e5e7ef;">
+                    <img src="logobackg.png" alt="BrainForge Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span>BrainForge</span>
+            </div>
+        </div>
+
+        <nav style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1; padding: 0 16px;">
+            <a href="index.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-house"></i> Dashboard</a>
+            <a href="subjects.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-book-open"></i> Subjects</a>
+            <a href="mission.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; background: #efedff; color: #5b4bdb; text-decoration: none; font-weight: 700; font-size: 14px;"><i class="fa fa-gamepad"></i> Missions</a>
+            <a href="achievements.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-trophy"></i> Achievements</a>
+            <a href="progress.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-chart-line"></i> Progress</a>
+        </nav>
+        
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 16px;">
+            <a href="settings.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-gear"></i> Settings</a>
+            <a href="#" onclick="openLogoutModal(event)" onmouseenter="this.style.background='#fff5f5';" onmouseleave="this.style.background='transparent';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #e53e3e; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header id="pageHeader" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html" style="background: white; border: 1px solid #e5e7ef; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #172033; text-decoration: none;">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <div>
+                    <span id="missionBadgeTag" style="background: #efedff; color: #5b4bdb; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 11px; text-transform: uppercase;">Practice Session</span>
+                    <h1 id="missionMainTitle" style="font-size: 22px; font-weight: 800; color: #172033; margin: 4px 0 0 0;">Interactive Challenge</h1>
+                </div>
+            </div>
+            <span id="gradeDisplayBadge" style="background: #efedff; color: #5b4bdb; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px; border: 1px solid #d2ccff;">Grade 7</span>
+        </header>
+
+        <div style="background: white; padding: 18px 24px; border-radius: 16px; border: 1px solid #e5e7ef; margin-bottom: 16px; display: flex; justify-content: space-between;">
+            <span id="questionCounterText" style="font-size: 13px; font-weight: 700; color: #70798c;">Loading Questions...</span>
+            <span id="scoreTrackerText" style="font-size: 13px; font-weight: 700; color: #5b4bdb;">Score: 0 XP</span>
+        </div>
+        <div style="width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; margin-bottom: 25px; overflow: hidden;">
+            <div id="quizProgressBar" style="width: 2%; height: 100%; background: #5b4bdb; transition: width 0.3s ease;"></div>
+        </div>
+
+        <div id="missionCardBox" style="background: white; padding: 32px; border-radius: 24px; border: 1px solid #e5e7ef;">
+            <h2 id="questionPromptTitle" style="font-size: 19px; font-weight: 800; color: #172033; margin-top: 0; margin-bottom: 20px;"></h2>
+            <div id="optionsButtonContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+    </main>
+
+    <script>
+        let fullQuestionBank = [];
+        let currentQuestionIdx = 0;
+        let currentScore = 0;
+        let targetQuestionCount = 10;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const topic = localStorage.getItem("selectedTopic") || "Core Fundamentals";
+            const subject = localStorage.getItem("selectedSubject") || "Mathematics";
+            const grade = parseInt(localStorage.getItem("studentGrade") || "7");
+            targetQuestionCount = parseInt(localStorage.getItem("questionCount") || "10", 10);
+
+            document.getElementById("missionBadgeTag").innerText = `${subject} — ${topic}`;
+            document.getElementById("gradeDisplayBadge").innerText = `Grade ${grade}`;
+
+            fullQuestionBank = generateGradeAdaptedQuestions(grade, subject, topic, targetQuestionCount);
+            loadQuestion();
+        });
+
+        function generateGradeAdaptedQuestions(grade, subject, topic, count) {
+            let bank = [];
+            for (let i = 1; i <= count; i++) {
+                let qText = "";
+                let correctAns = "";
+                let options = [];
+
+                if (subject === "Mathematics" || subject === "Physics") {
+                    let n1 = i + grade;
+                    let n2 = (i % 8) + 2;
+                    qText = `Solve for ${topic}: What is ${n1} + ${n2} × 2?`;
+                    let ans = n1 + n2 * 2;
+                    correctAns = ans.toString();
+                    options = [correctAns, (ans + 3).toString(), (ans - 5).toString(), (ans + 8).toString()];
+                } else if (subject === "Science" || subject === "Chemistry" || subject === "Biology" || subject === "EVS") {
+                    qText = `Science Mastery Q${i} (${topic}): In studying ${topic}, what is the primary core principle?`;
+                    correctAns = `To maintain balance and energy transfer in ${topic}`;
+                    options = [`To stop all reactions`, correctAns, `To reverse the cycle`, `To create mass from nothing`];
+                } else {
+                    qText = `Language Arts Q${i} (${topic}): Identify the correct grammar structure for proper clarity.`;
+                    correctAns = `A well-structured sentence with correct subject-verb agreement.`;
+                    options = [`A sentence missing punctuation and verbs.`, correctAns, `A run-on sentence.`, `A fragment lacking a complete thought.`];
+                }
+
+                options.sort(() => Math.random() - 0.5);
+                let correctIdx = options.indexOf(correctAns);
+
+                bank.push({
+                    q: `(${topic}) Question ${i}: ${qText}`,
+                    options: options,
+                    correct: correctIdx
+                });
+            }
+            return bank;
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIdx >= fullQuestionBank.length) {
+                let currentTotalXP = parseInt(localStorage.getItem("studentXP")) || 0;
+                let maxXP = parseInt(localStorage.getItem("studentMaxXP")) || 100;
+                let currentLevel = parseInt(localStorage.getItem("studentLevel")) || 1;
+
+                currentTotalXP += currentScore;
+
+                if (currentTotalXP >= maxXP) {
+                    currentTotalXP -= maxXP;
+                    currentLevel += 1;
+                    maxXP += 50;
+                    localStorage.setItem("studentLevel", currentLevel);
+                    localStorage.setItem("studentMaxXP", maxXP);
+                }
+
+                localStorage.setItem("studentXP", currentTotalXP);
+
+                document.getElementById("missionCardBox").innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="width: 70px; height: 70px; background: #eafaf3; color: #20a36a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px auto;"><i class="fa fa-trophy"></i></div>
+                        <h2 style="color: #172033; font-size: 22px; font-weight: 800; margin-bottom: 8px;">Mission Completed!</h2>
+                        <p style="color: #70798c; font-size: 14px; margin-bottom: 24px;">You completed all ${targetQuestionCount} questions and earned <b>${currentScore} XP</b>.</p>
+                        <button onclick="window.location.href='index.html'" style="padding: 12px 24px; background: #5b4bdb; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer;">Return to Dashboard</button>
+                    </div>`;
+                return;
+            }
+
+            const currentObj = fullQuestionBank[currentQuestionIdx];
+            document.getElementById("questionCounterText").innerText = `Question ${currentQuestionIdx + 1} of ${targetQuestionCount}`;
+            document.getElementById("scoreTrackerText").innerText = `Score: ${currentScore} XP`;
+            document.getElementById("quizProgressBar").style.width = `${((currentQuestionIdx + 1) / targetQuestionCount) * 100}%`;
+            document.getElementById("questionPromptTitle").innerText = currentObj.q;
+
+            const optsContainer = document.getElementById("optionsButtonContainer");
+            optsContainer.innerHTML = '';
+
+            currentObj.options.forEach((optText, index) => {
+                const btn = document.createElement('button');
+                btn.style.cssText = "padding: 14px 18px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; text-align: left; font-weight: 700; color: #172033; cursor: pointer; transition: all 0.2s;";
+                btn.innerHTML = `<span style="display: inline-block; width: 24px; height: 24px; background: #efedff; color: #5b4bdb; border-radius: 6px; text-align: center; line-height: 24px; margin-right: 10px; font-size: 12px;">${String.fromCharCode(65 + index)}</span> ${optText}`;
+                
+                btn.onclick = () => {
+                    const buttons = optsContainer.children;
+                    if (index === currentObj.correct) {
+                        btn.style.background = '#eafaf3';
+                        btn.style.borderColor = '#20a36a';
+                        btn.style.color = '#10b981';
+                        currentScore += 10;
+                    } else {
+                        btn.style.background = '#fef2f2';
+                        btn.style.borderColor = '#ef4444';
+                        btn.style.color = '#ef4444';
+                        buttons[currentObj.correct].style.background = '#eafaf3';
+                        buttons[currentObj.correct].style.borderColor = '#20a36a';
+                    }
+                    for (let b of buttons) b.disabled = true;
+
+                    setTimeout(() => {
+                        currentQuestionIdx++;
+                        loadQuestion();
+                    }, 800);
+                };
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        function openLogoutModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById("logoutModal");
+            const card = document.getElementById("logoutModalCard");
+            if (modal) {
+                modal.style.display = "flex";
+                setTimeout(() => {
+                    modal.style.opacity = "1";
+                    if (card) card.style.transform = "scale(1)";
+                }, 10);
+            }
+        }
+
+        function closeLogoutModal() {
+            const modal = document.getElementById("logoutModal");
+            const card = document.getElementById("logoutModalCard");
+            if (modal) {
+                modal.style.opacity = "0";
+                if (card) card.style.transform = "scale(0.95)";
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        }
+
+        function confirmLogout() {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div style="background: #ffffff; padding: 32px; border-radius: 20px; width: 100%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); text-align: center; transform: scale(0.95); transition: transform 0.3s ease;" id="logoutModalCard">
+            <div style="width: 56px; height: 56px; background: #fff5f5; color: #e53e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 16px;">
+                <i class="fa fa-right-from-bracket"></i>
+            </div>
+            <h3 style="margin: 0 0 8px 0; color: #172033; font-size: 20px; font-weight: 700;">Log Out of BrainForge?</h3>
+            <p style="margin: 0 0 24px 0; color: #70798c; font-size: 14px; line-height: 1.5;">Are you sure you want to end your session? Your progress is safely saved.</p>
+            <div style="display: flex; gap: 12px;">
+                <button onclick="closeLogoutModal()" style="flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
+                <button onclick="confirmLogout()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #e53e3e; color: #ffffff; font-weight: 600; font-size: 14px; cursor: pointer;">Log Out</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

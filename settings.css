@@ -1,0 +1,144 @@
+/* ==========================================================================
+   BRAINFORGE PREFERENCES SHEET - PART 1
+   ========================================================================== */
+
+/* Main layout grid box holding settings components sheets */
+.settings-container {
+    display: grid;
+    gap: 25px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px; /* Keeps the settings rows neat and readable */
+}
+
+/* Individual preference module card wraps */
+.settings-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #e5e7ef;
+    box-shadow: 0 4px 12px rgba(30, 35, 60, 0.02);
+    transition: transform 0.2s ease;
+}
+
+/* Internal formatting grouping spacing containers */
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+/* Standard profile username text fields row layouts */
+.input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-row label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #70798c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-row input {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7ef;
+    font-size: 15px;
+    color: #172033;
+    background: #fafbfc;
+    outline: none;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+/* Highlight border outline when a student edits their nickname input box */
+.input-row input:focus {
+    border-color: #5b4bdb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(91, 75, 219, 0.1);
+}
+/* ==========================================================================
+   BRAINFORGE PREFERENCES SHEET - PART 2
+   ========================================================================== */
+
+/* App setting toggle horizontal layout alignments splits */
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f4f6fb;
+}
+
+.toggle-row:last-child {
+    border-bottom: none; /* Drops the bottom dividing border line on the last toggle option row */
+}
+
+.toggle-row strong {
+    font-size: 15px;
+    color: #172033;
+    font-weight: 700;
+}
+
+/* Custom platform checkbox switch housing wrapper */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The actual clickable slide track background component layout */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7ef;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 34px;
+}
+
+/* The rolling circular toggle button node thumb element indicator track */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Switches background canvas properties instantly to rich purple when active checked */
+input:checked + .slider {
+    background-color: #5b4bdb;
+}
+
+/* Shifts the button node cleanly across X coordinates when checked toggled */
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Profile reset warning panel highlight constraints definitions adjustments */
+.danger-zone {
+    border-color: #ffccd1;
+    background: #fffbfe;
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainForge | Settings & Preferences</title>
+    <!-- LINKED YOUR EXISTING SETTINGS STYLESHEET -->
+    <link rel="stylesheet" type="text/css" href="settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { margin: 0; background-color: #f4f6fb; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
+        .sidebar { position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: white; border-right: 1px solid #e5e7ef; display: flex; flex-direction: column; z-index: 100; box-sizing: border-box; transition: transform 0.3s ease; }
+        .main { margin-left: 260px; width: calc(100% - 260px); padding: 35px 45px; box-sizing: border-box; min-height: 100vh; }
+        .settings-card { background: white; padding: 28px; border-radius: 20px; border: 1px solid #e5e7ef; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
+        .danger-card { background: #fffcfc; border: 1px solid #fecaca; }
+        .form-input { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 14px; box-sizing: border-box; margin-top: 8px; margin-bottom: 16px; outline: none; transition: border-color 0.2s; }
+        .form-input:focus { border-color: #5b4bdb; }
+        .btn-primary { background: #5b4bdb; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; transition: opacity 0.2s; }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-danger { background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 14px; transition: opacity 0.2s; }
+        .btn-danger:hover { opacity: 0.9; }
+        @media (max-width: 900px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main { margin-left: 0 !important; width: 100% !important; padding: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        if (!localStorage.getItem("brainforgeUser") && !localStorage.getItem("studentName")) {
+            window.location.href = "login.html";
+        }
+    </script>
+<aside style="width: 260px; background: #ffffff; border-right: 1px solid #f1f5f9; display: flex; flex-direction: column; height: 100vh; position: fixed; top: 0; left: 0; font-family: 'Inter', sans-serif; box-sizing: border-box; padding: 24px 0;">
+    <!-- Brand Header with logo.png -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 0 24px; margin-bottom: 32px;">
+        <img src="logo.png" alt="BrainForge Logo" style="width: 40px; height: 40px; border-radius: 12px; object-fit: cover;">
+        <span style="font-size: 20px; font-weight: 800; color: #172033; letter-spacing: -0.5px;">BrainForge</span>
+    </div>
+
+    <!-- Main Navigation (All with smooth hover effects) -->
+    <nav style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1; padding: 0 16px;">
+        <a href="index.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-house"></i> Dashboard</a>
+        
+        <a href="subjects.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-book-open"></i> Subjects</a>
+        
+        <a href="mission.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-gamepad"></i> Missions</a>
+        
+        <a href="achievements.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-trophy"></i> Achievements</a>
+        
+        <a href="progress.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #70798c; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-chart-line"></i> Progress</a>
+    </nav>
+
+    <!-- Bottom Section (Settings Highlighted & Logout Modal Trigger) -->
+    <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 16px; border-top: 1px solid #f1f5f9; padding-top: 16px;">
+        <a href="settings.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; background: #efedff; color: #5b4bdb; text-decoration: none; font-weight: 700; font-size: 14px;"><i class="fa fa-gear"></i> Settings</a>
+        
+        <a href="#" onclick="openLogoutModal(event)" onmouseenter="this.style.background='#fff5f5';" onmouseleave="this.style.background='transparent';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #e53e3e; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-right-from-bracket"></i> Logout</a>
+    </div>
+</aside>
+
+    <!-- MAIN SETTINGS CONTAINER -->
+    <main class="main">
+        <header id="settingsHeader" style="margin-bottom: 30px;">
+            <span style="font-size: 11px; font-weight: 700; color: #5b4bdb; text-transform: uppercase; letter-spacing: 1px;">System Preferences</span>
+            <h1 style="font-size: 26px; font-weight: 800; color: #172033; margin: 4px 0 2px 0;">Settings</h1>
+            <p id="studentLevelSubtitle" style="font-size: 14px; color: #70798c; margin: 0;">Student Level 1</p>
+        </header>
+
+        <!-- PROFILE SETTINGS -->
+        <div class="settings-card">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <div style="background: #efedff; color: #5b4bdb; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center;"><i class="fa fa-user-pen"></i></div>
+                <h2 style="font-size: 18px; font-weight: 800; color: #172033; margin: 0;">Student Profile</h2>
+            </div>
+            
+            <label style="font-size: 12px; font-weight: 700; color: #70798c; text-transform: uppercase;">Display Nickname</label>
+            <input type="text" id="nicknameInputBox" class="form-input" placeholder="Enter your display name...">
+            
+            <label style="font-size: 12px; font-weight: 700; color: #70798c; text-transform: uppercase;">Select Grade Level</label>
+            <select id="gradeSelectDropdown" class="form-input">
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+                <option value="5">Grade 5</option>
+                <option value="6">Grade 6</option>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+            </select>
+
+            <button onclick="saveProfileChanges()" class="btn-primary">Save Profile Changes</button>
+        </div>
+
+        <!-- APP PREFERENCES -->
+        <div class="settings-card">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <div style="background: #efedff; color: #5b4bdb; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center;"><i class="fa fa-sliders"></i></div>
+                <h2 style="font-size: 18px; font-weight: 800; color: #172033; margin: 0;">App Preferences</h2>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+                <div>
+                    <h4 style="margin: 0; font-size: 14px; color: #172033; font-weight: 700;">Sound Effects</h4>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: #70798c;">Play completion alerts and level-up audio updates</p>
+                </div>
+                <input type="checkbox" id="soundToggleCheck" checked style="width: 18px; height: 18px; accent-color: #5b4bdb; cursor: pointer;">
+            </div>
+        </div>
+
+        <!-- DANGER ZONE -->
+        <div class="settings-card danger-card">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                <div style="background: #fee2e2; color: #ef4444; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center;"><i class="fa fa-triangle-exclamation"></i></div>
+                <h2 style="font-size: 18px; font-weight: 800; color: #b91c1c; margin: 0;">Danger Zone</h2>
+            </div>
+            <p style="font-size: 13px; color: #7f1d1d; margin-bottom: 20px;">Destructive actions regarding your student account progress and local browser storage data.</p>
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button onclick="resetStudentProgress()" style="background: white; color: #b91c1c; border: 1px solid #fecaca; padding: 10px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px;">Reset Quiz Scores & XP</button>
+                <button onclick="performFullAccountWipe()" class="btn-danger">Delete Account Data & Logout</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- SETTINGS LOGIC SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.innerWidth <= 900) {
+                const header = document.getElementById("settingsHeader");
+                if (header && !document.getElementById("mobileToggleBtn")) {
+                    const btn = document.createElement("button");
+                    btn.id = "mobileToggleBtn";
+                    btn.innerHTML = '<i class="fa fa-bars"></i>';
+                    btn.style.cssText = "background: white; border: 1px solid #e5e7ef; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 16px; color: #5b4bdb; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 15px;";
+                    btn.onclick = () => {
+                        document.querySelector(".sidebar").classList.toggle("mobile-open");
+                    };
+                    header.prepend(btn);
+                }
+            }
+
+            const currentName = localStorage.getItem("studentName") || localStorage.getItem("brainforgeUser") || "Student";
+            const currentGrade = localStorage.getItem("studentGrade") || "7";
+            
+            document.getElementById("nicknameInputBox").value = currentName;
+            document.getElementById("studentLevelSubtitle").innerText = `${currentName} — Grade ${currentGrade}`;
+            
+            const gradeSelect = document.getElementById("gradeSelectDropdown");
+            gradeSelect.value = currentGrade;
+        });
+
+        function saveProfileChanges() {
+            const newName = document.getElementById("nicknameInputBox").value.trim();
+            const newGrade = document.getElementById("gradeSelectDropdown").value;
+
+            if (newName) {
+                localStorage.setItem("studentName", newName);
+                localStorage.setItem("brainforgeUser", newName);
+            }
+            localStorage.setItem("studentGrade", newGrade);
+
+            alert("Settings successfully saved!");
+            location.reload();
+        }
+
+        function resetStudentProgress() {
+            if (confirm("Are you sure you want to reset all your XP and quiz progression?")) {
+                localStorage.removeItem("brainforgeScore");
+                localStorage.removeItem("completedMissions");
+                alert("Progress successfully reset.");
+                location.reload();
+            }
+        }
+
+        function performFullAccountWipe() {
+            if (confirm("WARNING: This will completely remove your profile data and log you out. Proceed?")) {
+                localStorage.clear();
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+</body>
+</html>

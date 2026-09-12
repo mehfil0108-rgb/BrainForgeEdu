@@ -1,0 +1,179 @@
+/* ==========================================================================
+   BRAINFORGE QUIZ ENGINE PREFERENCES SHEET - PART 1
+   ========================================================================== */
+
+/* Main layout wrapper housing active testing modules */
+.mission-container {
+    display: grid;
+    gap: 25px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 850px;
+}
+
+/* Master card bounding wrapper for the active question box */
+.quiz-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #e5e7ef;
+    box-shadow: 0 4px 12px rgba(30, 35, 60, 0.02);
+}
+
+/* Top context bar showing current tracker data stats */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f4f6fb;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+#questionCount {
+    font-size: 13px;
+    font-weight: 700;
+    color: #70798c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* The display node showing the active trivia text question string */
+.question-box h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #172033;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+/* ==========================================================================
+   BRAINFORGE QUIZ ENGINE PREFERENCES SHEET - PART 2
+   ========================================================================== */
+
+/* The 2x2 grid housing the multiple-choice response buttons */
+.options-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+/* Base button properties for option elements */
+.option-btn {
+    background: #fafbfc;
+    color: #172033;
+    border: 1px solid #e5e7ef;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+                background 0.2s ease,
+                border-color 0.2s ease;
+}
+
+/* Snap purple outline tracking states when a student moves over an item */
+.option-btn:hover:not(:disabled) {
+    border-color: #5b4bdb;
+    background: #efedff;
+    color: #5b4bdb;
+}
+
+.option-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* Freeze option element buttons once selected */
+.option-btn:disabled {
+    cursor: not-allowed;
+}
+/* ==========================================================================
+   BRAINFORGE QUIZ ENGINE PREFERENCES SHEET - PART 3
+   ========================================================================== */
+
+/* Correct and incorrect choice illumination mechanics */
+.option-btn.correct-choice {
+    background: #20a36a !important;
+    color: white !important;
+    border-color: #20a36a !important;
+    box-shadow: 0 4px 15px rgba(32, 163, 106, 0.2);
+}
+
+.option-btn.wrong-choice {
+    background: #ef4444 !important;
+    color: white !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+/* Completion summary panel layout wraps */
+.completion-card {
+    display: none;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #e5e7ef;
+    text-align: center;
+}
+
+.reward-pills-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.reward-badge {
+    background: #f4f6fb;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reward-badge.xp-pill { color: #5b4bdb; background: #efedff; }
+.reward-badge.coin-pill { color: #f59e0b; background: #fffde7; }
+
+/* ==========================================================================
+   DASHBOARD UPCOMING MISSION CARD STYLING FIXED
+   ========================================================================== */
+.mission-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mission-button {
+    background: #5b4bdb;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.mission-button:hover {
+    background: #4a3bc2;
+}
+
+.mission-button:active {
+    transform: scale(0.97);
+}
+/* ==========================================================================
+   BACK DASHBOARD BUTTON ANIMATION LIFT
+   ========================================================================== */
+.back-dashboard-btn {
+    transition: color 0.2s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.back-dashboard-btn:hover {
+    color: #172033 !important;
+    transform: translateX(-4px); /* Glides elegantly left on mouse hover */
+}

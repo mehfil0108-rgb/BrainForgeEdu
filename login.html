@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainForge | Log In</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="logobackg.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5b4bdb;
+            --primary-glow: rgba(91, 75, 219, 0.35);
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+            overflow-x: hidden;
+        }
+
+        .login-container {
+            width: 100%;
+            min-height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .login-inner {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .brand-icon-box {
+            width: 64px;
+            height: 64px;
+            background: #0b0f19;
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 10px 20px rgba(91, 75, 219, 0.4);
+            overflow: hidden;
+            border: 1px solid #e5e7ef;
+        }
+
+        .brand-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            margin: 0 0 28px 0;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .divider::before { margin-right: 12px; }
+        .divider::after { margin-left: 12px; }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 13px 16px 13px 46px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #0f172a;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            background: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(91, 75, 219, 0.12);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #5b4bdb 0%, #7665ec 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(91, 75, 219, 0.3);
+            transition: all 0.2s ease;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(91, 75, 219, 0.4);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .footer-text a {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* In-UI Mobile Feedback Banner */
+        #uiLoginMessage {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        #uiLoginMessage.error {
+            background: #ffeeec;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        /* Immersive Grade Selection Modal */
+        #gradeModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-inner">
+            <div class="brand-icon-box">
+                <img src="logobackg.png" alt="BrainForge Logo">
+            </div>
+            
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Log in to continue your learning journey.</p>
+
+            <div id="uiLoginMessage"></div>
+
+            <div class="social-buttons">
+                <button type="button" class="social-btn" onclick="initiateLogin('Google User')">
+                    <i class="fab fa-google" style="color: #ea4335;"></i> Google
+                </button>
+                <button type="button" class="social-btn" onclick="initiateLogin('Apple User')">
+                    <i class="fab fa-apple" style="color: #000000;"></i> Apple
+                </button>
+            </div>
+
+            <div class="divider">Or with Email</div>
+
+            <form id="loginForm" onsubmit="handleEmailSubmit(event)">
+                <div class="input-group">
+                    <label for="studentEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fa fa-envelope"></i>
+                        <input type="email" id="studentEmail" class="input-field" placeholder="name@example.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="studentPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="studentPassword" class="input-field" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Log In <i class="fa fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="footer-text">
+                Don't have an account? <a href="signup.html">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMMERSIVE GRADE SELECTION MODAL -->
+    <div id="gradeModal">
+        <div class="modal-card">
+            <div style="width: 50px; height: 50px; background: #efedff; color: #5b4bdb; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 16px auto;">
+                <i class="fa fa-graduation-cap"></i>
+            </div>
+            <h2 style="margin: 0 0 6px 0; color: #0f172a; font-size: 22px; font-weight: 800;">Select Your Grade Level</h2>
+            <p style="color: #64748b; font-size: 13px; margin: 0;">This tailors subjects and mission challenges specifically for you.</p>
+
+            <div class="grade-grid">
+                <button type="button" class="grade-pill-btn" data-grade="1" onclick="selectGradeBadge(this, '1')">Grade 1</button>
+                <button type="button" class="grade-pill-btn" data-grade="2" onclick="selectGradeBadge(this, '2')">Grade 2</button>
+                <button type="button" class="grade-pill-btn" data-grade="3" onclick="selectGradeBadge(this, '3')">Grade 3</button>
+                <button type="button" class="grade-pill-btn" data-grade="4" onclick="selectGradeBadge(this, '4')">Grade 4</button>
+                <button type="button" class="grade-pill-btn" data-grade="5" onclick="selectGradeBadge(this, '5')">Grade 5</button>
+                <button type="button" class="grade-pill-btn" data-grade="6" onclick="selectGradeBadge(this, '6')">Grade 6</button>
+                <button type="button" class="grade-pill-btn" data-grade="7" onclick="selectGradeBadge(this, '7')">Grade 7</button>
+                <button type="button" class="grade-pill-btn" data-grade="8" onclick="selectGradeBadge(this, '8')">Grade 8</button>
+                <button type="button" class="grade-pill-btn" data-grade="9" onclick="selectGradeBadge(this, '9')">Grade 9</button>
+                <button type="button" class="grade-pill-btn" data-grade="10" onclick="selectGradeBadge(this, '10')">Grade 10</button>
+            </div>
+            <button type="button" onclick="finalizeLogin()" class="submit-btn">
+                Launch Dashboard <i class="fa fa-rocket"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let tempUsername = "Student";
+        let selectedGradeLevel = "7";
+
+        function showLoginBanner(message) {
+            const banner = document.getElementById("uiLoginMessage");
+            banner.innerText = message;
+            banner.className = "error";
+            banner.style.display = "block";
+        }
+
+        function handleEmailSubmit(event) {
+            event.preventDefault();
+            const email = document.getElementById("studentEmail").value.trim();
+            const password = document.getElementById("studentPassword").value;
+            
+            const savedEmail = localStorage.getItem("registeredEmail");
+            const savedPassword = localStorage.getItem("registeredPassword");
+
+            // If user has a registered account locally, check credentials. Otherwise, allow smooth login fallback.
+            if (savedEmail && savedPassword) {
+                if (email !== savedEmail || password !== savedPassword) {
+                    showLoginBanner("Incorrect email or password. Please try again.");
+                    return;
+                }
+            }
+
+            let userName = email.split('@')[0];
+            tempUsername = userName.charAt(0).toUpperCase() + userName.slice(1);
+            
+            showGradeModal();
+        }
+
+        function initiateLogin(providerName) {
+            tempUsername = providerName;
+            showGradeModal();
+        }
+
+        function showGradeModal() {
+            document.getElementById("gradeModal").style.display = "flex";
+        }
+
+        function selectGradeBadge(btn, gradeNum) {
+            selectedGradeLevel = gradeNum;
+            document.querySelectorAll(".grade-pill-btn").forEach(b => {
+                b.style.background = "#f8fafc";
+                b.style.color = "#1e293b";
+                b.style.borderColor = "#e2e8f0";
+            });
+            btn.style.background = "#5b4bdb";
+            btn.style.color = "#ffffff";
+            btn.style.borderColor = "#5b4bdb";
+        }
+
+        function finalizeLogin() {
+            localStorage.setItem("brainforgeUser", tempUsername);
+            localStorage.setItem("studentName", tempUsername);
+            localStorage.setItem("studentGrade", selectedGradeLevel);
+            window.location.href = "index.html";
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

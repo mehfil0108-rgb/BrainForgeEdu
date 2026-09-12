@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainForge | Achievements</title>
+    
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="achievements.css">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <style>
+        .sidebar {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-right: 1px solid rgba(229, 231, 239, 0.6) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="logo-area">
+                <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+                <h2>BrainForge</h2>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="transition: all 0.2s ease;"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                <a href="subjects.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="transition: all 0.2s ease;"><i class="fa fa-book"></i> <span>Subjects</span></a>
+                <a href="mission.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="transition: all 0.2s ease;"><i class="fa fa-gamepad"></i> <span>Missions</span></a>
+                <a href="achievements.html" class="active"><i class="fa fa-trophy"></i> <span>Achievements</span></a>
+                <a href="progress.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="transition: all 0.2s ease;"><i class="fa fa-chart-line"></i> <span>Progress</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <a href="settings.html" onmouseenter="this.style.background='#f4f3ff'; this.style.color='#5b4bdb';" onmouseleave="this.style.background='transparent'; this.style.color='#70798c';" style="transition: all 0.2s ease;"><i class="fa fa-cog"></i> <span>Settings</span></a>
+            <a href="#" onclick="openLogoutModal(event)" onmouseenter="this.style.background='#fff5f5';" onmouseleave="this.style.background='transparent';" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; color: #e53e3e; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s ease;"><i class="fa fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main">
+        
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-titles">
+                <span class="small-title">TROPHY ROOM</span>
+                <h1 id="welcomeUserTitle">Welcome back!</h1>
+            </div>
+            <div class="profile-area">
+                <div class="profile-text">
+                    <strong id="profileNameDisplay">Student</strong>
+                    <span id="profileLevelDisplay">Level 1</span>
+                </div>
+                <div class="profile-image">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Banner -->
+        <section class="achievements-summary">
+            <div class="summary-card">
+                <div class="summary-info">
+                    <h2>Trophy Showcase</h2>
+                    <p>Complete quiz checkpoints and level up to unlock all 100 collector badges.</p>
+                </div>
+                <div class="summary-counter">
+                    <span id="unlockedCountBadge">1 / 100 Unlocked</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trophy Grid Cabinet Layout -->
+        <section class="trophy-grid">
+
+            <!-- ==================== MILESTONE TIERS (1 - 100) ==================== -->
+            <div class="trophy-card locked" id="badge-level-1"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier I</h3><p>Reach Student Level 1.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-2"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier II</h3><p>Reach Student Level 2.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-3"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier III</h3><p>Reach Student Level 3.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-4"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier IV</h3><p>Reach Student Level 4.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-5"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier V</h3><p>Reach Student Level 5.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-6"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier VI</h3><p>Reach Student Level 6.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-7"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier VII</h3><p>Reach Student Level 7.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-8"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier VIII</h3><p>Reach Student Level 8.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-9"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier IX</h3><p>Reach Student Level 9.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-10"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier X</h3><p>Reach Student Level 10.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-11"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XI</h3><p>Reach Student Level 11.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-12"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XII</h3><p>Reach Student Level 12.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-13"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XIII</h3><p>Reach Student Level 13.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-14"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XIV</h3><p>Reach Student Level 14.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-15"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XV</h3><p>Reach Student Level 15.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-16"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XVI</h3><p>Reach Student Level 16.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-17"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XVII</h3><p>Reach Student Level 17.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-18"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XVIII</h3><p>Reach Student Level 18.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-19"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XIX</h3><p>Reach Student Level 19.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-20"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XX</h3><p>Reach Student Level 20.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-21"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXI</h3><p>Reach Student Level 21.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-22"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXII</h3><p>Reach Student Level 22.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-23"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXIII</h3><p>Reach Student Level 23.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-24"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXIV</h3><p>Reach Student Level 24.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-25"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXV</h3><p>Reach Student Level 25.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-26"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXVI</h3><p>Reach Student Level 26.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-27"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXVII</h3><p>Reach Student Level 27.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-28"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXVIII</h3><p>Reach Student Level 28.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-29"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXIX</h3><p>Reach Student Level 29.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-30"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXX</h3><p>Reach Student Level 30.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-31"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXI</h3><p>Reach Student Level 31.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-32"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXII</h3><p>Reach Student Level 32.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-33"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXIII</h3><p>Reach Student Level 33.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-34"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXIV</h3><p>Reach Student Level 34.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-35"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXV</h3><p>Reach Student Level 35.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-36"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXVI</h3><p>Reach Student Level 36.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-37"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXVII</h3><p>Reach Student Level 37.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-38"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXVIII</h3><p>Reach Student Level 38.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-39"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XXXIX</h3><p>Reach Student Level 39.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-40"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XL</h3><p>Reach Student Level 40.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-41"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLI</h3><p>Reach Student Level 41.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-42"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLII</h3><p>Reach Student Level 42.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-43"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLIII</h3><p>Reach Student Level 43.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-44"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLIV</h3><p>Reach Student Level 44.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-45"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLV</h3><p>Reach Student Level 45.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-46"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLVI</h3><p>Reach Student Level 46.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-47"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLVII</h3><p>Reach Student Level 47.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-48"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLVIII</h3><p>Reach Student Level 48.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-49"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XLIX</h3><p>Reach Student Level 49.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-50"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier L</h3><p>Reach Student Level 50.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-51"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LI</h3><p>Reach Student Level 51.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-52"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LII</h3><p>Reach Student Level 52.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-53"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LIII</h3><p>Reach Student Level 53.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-54"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LIV</h3><p>Reach Student Level 54.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-55"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LV</h3><p>Reach Student Level 55.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-56"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LVI</h3><p>Reach Student Level 56.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-57"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LVII</h3><p>Reach Student Level 57.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-58"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LVIII</h3><p>Reach Student Level 58.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-59"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LIX</h3><p>Reach Student Level 59.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-60"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LX</h3><p>Reach Student Level 60.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-61"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXI</h3><p>Reach Student Level 61.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-62"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXII</h3><p>Reach Student Level 62.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-63"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXIII</h3><p>Reach Student Level 63.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-64"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXIV</h3><p>Reach Student Level 64.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-65"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXV</h3><p>Reach Student Level 65.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-66"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXVI</h3><p>Reach Student Level 66.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-67"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXVII</h3><p>Reach Student Level 67.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-68"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXVIII</h3><p>Reach Student Level 68.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-69"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXIX</h3><p>Reach Student Level 69.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-70"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXX</h3><p>Reach Student Level 70.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-71"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXI</h3><p>Reach Student Level 71.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-72"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXII</h3><p>Reach Student Level 72.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-73"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXIII</h3><p>Reach Student Level 73.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-74"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXIV</h3><p>Reach Student Level 74.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-75"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXV</h3><p>Reach Student Level 75.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-76"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXVI</h3><p>Reach Student Level 76.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-77"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXVII</h3><p>Reach Student Level 77.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-78"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXVIII</h3><p>Reach Student Level 78.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-79"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXIX</h3><p>Reach Student Level 79.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-80"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXX</h3><p>Reach Student Level 80.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-81"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXI</h3><p>Reach Student Level 81.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-82"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXII</h3><p>Reach Student Level 82.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-83"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXIII</h3><p>Reach Student Level 83.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-84"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXIV</h3><p>Reach Student Level 84.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-85"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXV</h3><p>Reach Student Level 85.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-86"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXVI</h3><p>Reach Student Level 86.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-87"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXVII</h3><p>Reach Student Level 87.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-88"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXVIII</h3><p>Reach Student Level 88.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-89"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier LXXXIX</h3><p>Reach Student Level 89.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-90"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XC</h3><p>Reach Student Level 90.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-91"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCI</h3><p>Reach Student Level 91.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-92"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCII</h3><p>Reach Student Level 92.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-93"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCIII</h3><p>Reach Student Level 93.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-94"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCIV</h3><p>Reach Student Level 94.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-95"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCV</h3><p>Reach Student Level 95.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-96"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCVI</h3><p>Reach Student Level 96.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-97"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCVII</h3><p>Reach Student Level 97.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-98"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCVIII</h3><p>Reach Student Level 98.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-99"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier XCIX</h3><p>Reach Student Level 99.</p><span class="badge-status">LOCKED</span></div></div>
+            <div class="trophy-card locked" id="badge-level-100"><div class="badge-icon-wrap"><i class="fa fa-trophy"></i></div><div class="badge-details"><h3>Milestone Tier C</h3><p>Reach Student Level 100.</p><span class="badge-status">LOCKED</span></div></div>
+
+        </section>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div style="background: #ffffff; padding: 32px; border-radius: 20px; width: 100%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); text-align: center; transform: scale(0.95); transition: transform 0.3s ease;" id="logoutModalCard">
+            <div style="width: 56px; height: 56px; background: #fff5f5; color: #e53e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 16px;">
+                <i class="fa fa-right-from-bracket"></i>
+            </div>
+            <h3 style="margin: 0 0 8px 0; color: #172033; font-size: 20px; font-weight: 700;">Log Out of BrainForge?</h3>
+            <p style="margin: 0 0 24px 0; color: #70798c; font-size: 14px; line-height: 1.5;">Are you sure you want to end your session? Your progress is safely saved.</p>
+            <div style="display: flex; gap: 12px;">
+                <button onclick="closeLogoutModal()" style="flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
+                <button onclick="confirmLogout()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #e53e3e; color: #ffffff; font-weight: 600; font-size: 14px; cursor: pointer;">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userName = localStorage.getItem("studentName") || localStorage.getItem("brainforgeUser") || "Student";
+            const currentLevel = parseInt(localStorage.getItem("studentLevel")) || 1;
+
+            document.getElementById("welcomeUserTitle").innerText = `Welcome back, ${userName}!`;
+            document.getElementById("profileNameDisplay").innerText = userName;
+            document.getElementById("profileLevelDisplay").innerText = `Level ${currentLevel}`;
+
+            let unlockedCount = 0;
+
+            for (let i = 1; i <= 100; i++) {
+                const card = document.getElementById(`badge-level-${i}`);
+                if (!card) continue;
+
+                const isUnlocked = i <= currentLevel;
+                if (isUnlocked) {
+                    unlockedCount++;
+                    card.className = "trophy-card completed";
+                    const statusSpan = card.querySelector(".badge-status");
+                    if (statusSpan) {
+                        statusSpan.style.color = "#20a36a";
+                        statusSpan.innerHTML = '<i class="fa fa-lock-open"></i> COMPLETED';
+                    }
+                } else {
+                    card.className = "trophy-card locked";
+                    const statusSpan = card.querySelector(".badge-status");
+                    if (statusSpan) {
+                        statusSpan.style.color = "";
+                        statusSpan.innerHTML = 'LOCKED';
+                    }
+                }
+            }
+
+            document.getElementById("unlockedCountBadge").innerText = `${unlockedCount} / 100 Unlocked`;
+        });
+
+        function openLogoutModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById("logoutModal");
+            const card = document.getElementById("logoutModalCard");
+            if (modal) {
+                modal.style.display = "flex";
+                setTimeout(() => {
+                    modal.style.opacity = "1";
+                    if (card) card.style.transform = "scale(1)";
+                }, 10);
+            }
+        }
+
+        function closeLogoutModal() {
+            const modal = document.getElementById("logoutModal");
+            const card = document.getElementById("logoutModalCard");
+            if (modal) {
+                modal.style.opacity = "0";
+                if (card) card.style.transform = "scale(0.95)";
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        }
+
+        function confirmLogout() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
