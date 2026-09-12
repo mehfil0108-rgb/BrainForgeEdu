@@ -1,0 +1,20 @@
+{
+  "name": "BrainForge",
+  "short_name": "BrainForge",
+  "start_url": "/login.html",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#5b4bdb",
+  "icons": [
+    {
+      "src": "logobackg.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logobackg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
